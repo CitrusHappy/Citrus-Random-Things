@@ -1,0 +1,16 @@
+[
+{
+  "modid": "moremodels",
+  "name": "More Models",
+  "description": "Adds more models for usage in CustomNPCs",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Citrus", "Wuhu Island"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
