@@ -18,7 +18,7 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
     private AnimationFactory factory = new AnimationFactory(this);
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.test.walk", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crewmate.walk", true));
         return PlayState.CONTINUE;
     }
 
