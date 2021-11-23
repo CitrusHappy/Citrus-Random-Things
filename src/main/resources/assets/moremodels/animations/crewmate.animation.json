@@ -46,6 +46,50 @@
 					}
 				}
 			}
+		},
+		"animation.crewmate.idle": {
+			"animation_length": 3.66667,
+			"bones": {
+				"head": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, -1, 0],
+							"easing": "easeOutSine"
+						},
+						"3.6667": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutSine"
+						}
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.6667": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutSine"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, -1, 0],
+							"easing": "easeOutSine"
+						},
+						"3.6667": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutSine"
+						}
+					}
+				}
+			}
 		}
 	},
 	"geckolib_format_version": 2

@@ -10,6 +10,6 @@ public class RendererCrewMate extends GeoEntityRenderer<EntityCrewMate>
     public RendererCrewMate(RenderManager renderManager)
     {
         super(renderManager, new ModelCrewMate());
-        this.shadowSize = 0.7F; //change 0.7 to the desired shadow size.
+        this.shadowSize = 0.4F; //change 0.7 to the desired shadow size.
     }
 }

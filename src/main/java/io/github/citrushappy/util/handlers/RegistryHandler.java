@@ -21,4 +21,9 @@ public class RegistryHandler
         //RenderHandler.registerEntityRenders();
         //SoundsHandler.registerSounds();
     }
+
+    public static void initRegistries()
+    {
+        SoundsHandler.registerSounds();
+    }
 }

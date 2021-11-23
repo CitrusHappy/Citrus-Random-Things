@@ -6,12 +6,9 @@ import io.github.citrushappy.MoreModels;
 import io.github.citrushappy.util.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class EntityInit {
-
-    public static final EntityEntry CREW_MATE = null;
 
     public static void registerEntities()
     {

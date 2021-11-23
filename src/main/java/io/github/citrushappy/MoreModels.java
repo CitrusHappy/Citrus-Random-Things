@@ -5,6 +5,7 @@ import io.github.citrushappy.util.handlers.RegistryHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import software.bernie.geckolib3.GeckoLib;
 
@@ -28,6 +29,11 @@ public class MoreModels
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-        //
+        RegistryHandler.initRegistries();
+    }
+
+    @Mod.EventHandler
+    public static void PostInit(FMLPostInitializationEvent event){
+
     }
 }

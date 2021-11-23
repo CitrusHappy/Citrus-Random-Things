@@ -1,0 +1,36 @@
+{
+  "entity.crewmate.ambient":
+  {
+    "category":"entity",
+    "subtitle": "entity.crewmate.ambient",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/crewmate/ambient_1", "stream": true },
+      { "name":  "moremodels:entity/crewmate/ambient_2", "stream": true },
+      { "name":  "moremodels:entity/crewmate/ambient_3", "stream": true },
+      { "name":  "moremodels:entity/crewmate/ambient_4", "stream": true }
+    ]
+  },
+
+  "entity.crewmate.hurt":
+  {
+    "category":"entity",
+    "subtitle": "entity.crewmate.hurt",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/crewmate/hurt_1", "stream": true },
+      { "name":  "moremodels:entity/crewmate/hurt_2", "stream": true }
+    ]
+  },
+
+  "entity.crewmate.death":
+  {
+    "category":"entity",
+    "subtitle": "entity.crewmate.death",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/crewmate/death_1", "stream": true },
+      { "name":  "moremodels:entity/crewmate/death_2", "stream": true }
+    ]
+  }
+}
