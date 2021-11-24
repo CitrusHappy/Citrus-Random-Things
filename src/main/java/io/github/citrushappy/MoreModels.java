@@ -3,10 +3,10 @@ package io.github.citrushappy;
 import io.github.citrushappy.util.Reference;
 import io.github.citrushappy.util.handlers.RegistryHandler;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
 
@@ -16,17 +16,20 @@ public class MoreModels
     @Mod.Instance
     public static MoreModels instance;
 
+    public static Logger logger;
+
     //public static final CreativeTabs itemsblockstab = new CreaturesTab("itemsblockstabcreatures");
 
-    @EventHandler
+    @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+        logger = event.getModLog();
         RegistryHandler.preInitRegistries(event);
         GeckoLib.initialize();
     }
 
 
-    @EventHandler
+    @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
         RegistryHandler.initRegistries();

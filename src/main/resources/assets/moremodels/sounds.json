@@ -32,5 +32,45 @@
       { "name":  "moremodels:entity/crewmate/death_1", "stream": true },
       { "name":  "moremodels:entity/crewmate/death_2", "stream": true }
     ]
+  },
+
+  "entity.crewmate.fall.big":
+  {
+    "category":"entity",
+    "subtitle": "entity.crewmate.fall.big",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/crewmate/fall_big", "stream": true }
+    ]
+  },
+
+  "entity.crewmate.fall.small":
+  {
+    "category":"entity",
+    "subtitle": "entity.crewmate.fall.small",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/crewmate/fall_small", "stream": true }
+    ]
+  },
+
+  "entity.crewmate.player.collision":
+  {
+    "category":"entity",
+    "subtitle": "entity.crewmate.player.collision",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/crewmate/player_collision", "stream": true }
+    ]
+  },
+
+  "entity.crewmate.step.generic":
+  {
+    "category":"entity",
+    "subtitle": "entity.crewmate.step.generic",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/crewmate/step_generic", "stream": true }
+    ]
   }
 }

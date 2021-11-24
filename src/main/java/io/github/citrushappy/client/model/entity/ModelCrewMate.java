@@ -2,9 +2,7 @@ package io.github.citrushappy.client.model.entity;
 
 import io.github.citrushappy.entity.EntityCrewMate;
 import io.github.citrushappy.util.Reference;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedTickingGeoModel;
@@ -19,7 +17,8 @@ public class ModelCrewMate extends AnimatedTickingGeoModel<EntityCrewMate>
 
     @Override
     public ResourceLocation getTextureLocation(EntityCrewMate object) {
-        return new ResourceLocation(Reference.MOD_ID, "textures/entity/crewmate.png");
+        //io.github.citrushappy.MoreModels.logger.info("textures/entity/crewmate" + object.getCrewMateType() + ".png");
+        return new ResourceLocation(Reference.MOD_ID, "textures/entity/crewmate" + object.getCrewMateType() + ".png");
     }
 
     @Override
@@ -31,11 +30,14 @@ public class ModelCrewMate extends AnimatedTickingGeoModel<EntityCrewMate>
     public void setLivingAnimations(EntityCrewMate entity, Integer uniqueID, AnimationEvent customPredicate)
     {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
-        IBone head = this.getAnimationProcessor().getBone("head");
 
-        EntityLivingBase entityIn = (EntityLivingBase) entity;
-        EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
-        head.setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
-        head.setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));
+        if(!entity.isDead())
+        {
+            IBone head = this.getAnimationProcessor().getBone("head");
+
+            EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+            head.setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
+            head.setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));
+        }
     }
 }

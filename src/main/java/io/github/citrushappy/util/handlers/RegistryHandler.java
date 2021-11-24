@@ -18,8 +18,6 @@ public class RegistryHandler
     public static void preInitRegistries(FMLPreInitializationEvent event)
     {
         EntityInit.registerEntities();
-        //RenderHandler.registerEntityRenders();
-        //SoundsHandler.registerSounds();
     }
 
     public static void initRegistries()
