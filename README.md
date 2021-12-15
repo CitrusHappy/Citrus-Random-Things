@@ -6,7 +6,7 @@ This is a WIP mod. Feel free to contribute to the mod if you think you have some
 ### Crewmate
 *"AMONG US!"*
 
-A curious being that wanders around. Very suspicious.
+>A curious being that wanders around. Very suspicious.
 
 ![crewmate](https://i.imgur.com/vZiX2fr.png)
 
@@ -15,9 +15,10 @@ A curious being that wanders around. Very suspicious.
 
 ### Baka Mitai Creeper
 *"Dame da ne dame yo dame na no yo
+
 Anta ga suki de sukisugite"*
 
-Literally just a creeper with a longer fuse time and plays Baka Mitai before and after it explodes.
+>Literally just a creeper with a longer fuse time and plays Baka Mitai before and after it explodes.
 
 Inpired by this underrated mod: [Spakenmobs](https://www.curseforge.com/minecraft/mc-mods/spackenmobs)
 
