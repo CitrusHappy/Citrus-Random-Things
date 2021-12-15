@@ -1,6 +1,7 @@
 package io.github.citrushappy.init;
 
 
+import io.github.citrushappy.entity.EntityBakaMitaiCreeper;
 import io.github.citrushappy.entity.EntityCrewMate;
 import io.github.citrushappy.MoreModels;
 import io.github.citrushappy.util.Reference;
@@ -12,7 +13,8 @@ public class EntityInit {
 
     public static void registerEntities()
     {
-        registerEntity("CREW_MATE", EntityCrewMate.class, Reference.ENTITY_CREWMATE, 30, 16731716, 16777215);
+        registerEntity("crewmate", EntityCrewMate.class, Reference.ENTITY_CREWMATE, 30, 16731716, 16777215);
+        registerEntity("bakamitai_creeper", EntityBakaMitaiCreeper.class, Reference.ENTITY_BAKA_MITAI_CREEPER, 30, 60474, 18490);
     }
 
     private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range, int color1, int color2)

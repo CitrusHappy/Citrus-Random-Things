@@ -72,5 +72,25 @@
     [
       { "name":  "moremodels:entity/crewmate/step_generic", "stream": true }
     ]
+  },
+
+  "entity.bakamitaicreeper.fuse":
+  {
+    "category":"entity",
+    "subtitle": "entity.bakamitaicreeper.fuse",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/bakamitaicreeper/fuse", "stream": true }
+    ]
+  },
+
+  "entity.bakamitaicreeper.blow":
+  {
+    "category":"entity",
+    "subtitle": "entity.bakamitaicreeper.blow",
+    "sounds":
+    [
+      { "name":  "moremodels:entity/bakamitaicreeper/blow", "stream": true }
+    ]
   }
 }
