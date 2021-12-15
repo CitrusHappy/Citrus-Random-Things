@@ -11,10 +11,10 @@ import software.bernie.geckolib3.GeckoLib;
 
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
-public class MoreModels
+public class CitrusThings
 {
     @Mod.Instance
-    public static MoreModels instance;
+    public static CitrusThings instance;
 
     public static Logger logger;
 

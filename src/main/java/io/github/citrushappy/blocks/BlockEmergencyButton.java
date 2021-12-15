@@ -1,7 +1,5 @@
 package io.github.citrushappy.blocks;
 
-import io.github.citrushappy.MoreModels;
-import io.github.citrushappy.init.ItemInit;
 import io.github.citrushappy.util.Reference;
 import net.minecraft.block.BlockButton;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,8 +1,8 @@
 [
 {
-  "modid": "moremodels",
-  "name": "More Models",
-  "description": "Adds more models for usage in CustomNPCs",
+  "modid": "citrusthings",
+  "name": "Citrus' Random Things",
+  "description": "Adds some odd creatures and items based off memes and internet culture.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
