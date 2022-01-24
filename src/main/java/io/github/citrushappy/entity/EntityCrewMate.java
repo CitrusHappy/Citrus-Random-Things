@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
 
 public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnimationTickable
 {
-    private static final DataParameter<Integer> CREWMATE_VARIANT = EntityDataManager.<Integer>createKey(EntityCrewMate.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> CREWMATE_VARIANT = EntityDataManager.createKey(EntityCrewMate.class, DataSerializers.VARINT);
     int timeToSpeak = 200;
     boolean canPlayFallSound = false;
 
@@ -47,7 +47,6 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crewmate.death.pose", true));
             return PlayState.CONTINUE;
         }
-
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crewmate.idle", true));
         return PlayState.CONTINUE;
     }
@@ -227,7 +226,7 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
 
     public int getCrewMateType()
     {
-        return ((Integer)this.dataManager.get(CREWMATE_VARIANT)).intValue();
+        return this.dataManager.get(CREWMATE_VARIANT).intValue();
     }
 
     public void setCrewMateType(int crewmateTypeId)

@@ -5,10 +5,10 @@
     "subtitle": "entity.crewmate.ambient",
     "sounds":
     [
-      { "name":  "moremodels:entity/crewmate/ambient_1", "stream": true },
-      { "name":  "moremodels:entity/crewmate/ambient_2", "stream": true },
-      { "name":  "moremodels:entity/crewmate/ambient_3", "stream": true },
-      { "name":  "moremodels:entity/crewmate/ambient_4", "stream": true }
+      { "name":  "citrusthings:entity/crewmate/ambient_1", "stream": true },
+      { "name":  "citrusthings:entity/crewmate/ambient_2", "stream": true },
+      { "name":  "citrusthings:entity/crewmate/ambient_3", "stream": true },
+      { "name":  "citrusthings:entity/crewmate/ambient_4", "stream": true }
     ]
   },
 
@@ -18,8 +18,8 @@
     "subtitle": "entity.crewmate.hurt",
     "sounds":
     [
-      { "name":  "moremodels:entity/crewmate/hurt_1", "stream": true },
-      { "name":  "moremodels:entity/crewmate/hurt_2", "stream": true }
+      { "name":  "citrusthings:entity/crewmate/hurt_1", "stream": true },
+      { "name":  "citrusthings:entity/crewmate/hurt_2", "stream": true }
     ]
   },
 
@@ -29,8 +29,8 @@
     "subtitle": "entity.crewmate.death",
     "sounds":
     [
-      { "name":  "moremodels:entity/crewmate/death_1", "stream": true },
-      { "name":  "moremodels:entity/crewmate/death_2", "stream": true }
+      { "name":  "citrusthings:entity/crewmate/death_1", "stream": true },
+      { "name":  "citrusthings:entity/crewmate/death_2", "stream": true }
     ]
   },
 
@@ -40,7 +40,7 @@
     "subtitle": "entity.crewmate.fall.big",
     "sounds":
     [
-      { "name":  "moremodels:entity/crewmate/fall_big", "stream": true }
+      { "name":  "citrusthings:entity/crewmate/fall_big", "stream": true }
     ]
   },
 
@@ -50,7 +50,7 @@
     "subtitle": "entity.crewmate.fall.small",
     "sounds":
     [
-      { "name":  "moremodels:entity/crewmate/fall_small", "stream": true }
+      { "name":  "citrusthings:entity/crewmate/fall_small", "stream": true }
     ]
   },
 
@@ -60,7 +60,7 @@
     "subtitle": "entity.crewmate.player.collision",
     "sounds":
     [
-      { "name":  "moremodels:entity/crewmate/player_collision", "stream": true }
+      { "name":  "citrusthings:entity/crewmate/player_collision", "stream": true }
     ]
   },
 
@@ -70,7 +70,7 @@
     "subtitle": "entity.crewmate.step.generic",
     "sounds":
     [
-      { "name":  "moremodels:entity/crewmate/step_generic", "stream": true }
+      { "name":  "citrusthings:entity/crewmate/step_generic", "stream": true }
     ]
   },
 
@@ -80,7 +80,7 @@
     "subtitle": "entity.bakamitaicreeper.fuse",
     "sounds":
     [
-      { "name":  "moremodels:entity/bakamitaicreeper/fuse", "stream": true }
+      { "name":  "citrusthings:entity/bakamitaicreeper/fuse", "stream": true }
     ]
   },
 
@@ -90,7 +90,17 @@
     "subtitle": "entity.bakamitaicreeper.blow",
     "sounds":
     [
-      { "name":  "moremodels:entity/bakamitaicreeper/blow", "stream": true }
+      { "name":  "citrusthings:entity/bakamitaicreeper/blow", "stream": true }
+    ]
+  },
+
+  "item.kill":
+  {
+    "category": "item",
+    "subtitle": "item.kill",
+    "sounds":
+    [
+      { "name": "citrusthings:item/kill", "stream": true }
     ]
   }
 }

@@ -42,9 +42,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityBakaMitaiCreeper extends EntityMob {
-    private static final DataParameter<Integer> STATE = EntityDataManager.<Integer>createKey(EntityBakaMitaiCreeper.class, DataSerializers.VARINT);
-    private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityBakaMitaiCreeper.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Boolean> IGNITED = EntityDataManager.<Boolean>createKey(EntityBakaMitaiCreeper.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Integer> STATE = EntityDataManager.createKey(EntityBakaMitaiCreeper.class, DataSerializers.VARINT);
+    private static final DataParameter<Boolean> POWERED = EntityDataManager.createKey(EntityBakaMitaiCreeper.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> IGNITED = EntityDataManager.createKey(EntityBakaMitaiCreeper.class, DataSerializers.BOOLEAN);
     private int lastActiveTime;
     private int timeSinceIgnited;
     private int fuseTime = 100;
@@ -67,7 +67,7 @@ public class EntityBakaMitaiCreeper extends EntityMob {
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false, new Class[0]));
+        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
     }
 
     protected void applyEntityAttributes()
@@ -109,7 +109,7 @@ public class EntityBakaMitaiCreeper extends EntityMob {
     {
         super.writeEntityToNBT(compound);
 
-        if (((Boolean)this.dataManager.get(POWERED)).booleanValue())
+        if (this.dataManager.get(POWERED).booleanValue())
         {
             compound.setBoolean("powered", true);
         }
@@ -213,7 +213,7 @@ public class EntityBakaMitaiCreeper extends EntityMob {
 
     public boolean getPowered()
     {
-        return ((Boolean)this.dataManager.get(POWERED)).booleanValue();
+        return this.dataManager.get(POWERED).booleanValue();
     }
 
     @SideOnly(Side.CLIENT)
@@ -230,7 +230,7 @@ public class EntityBakaMitaiCreeper extends EntityMob {
 
     public int getCreeperState()
     {
-        return ((Integer)this.dataManager.get(STATE)).intValue();
+        return this.dataManager.get(STATE).intValue();
     }
 
     public void setCreeperState(int state)
@@ -302,7 +302,7 @@ public class EntityBakaMitaiCreeper extends EntityMob {
 
     public boolean hasIgnited()
     {
-        return ((Boolean)this.dataManager.get(IGNITED)).booleanValue();
+        return this.dataManager.get(IGNITED).booleanValue();
     }
 
     public void ignite()

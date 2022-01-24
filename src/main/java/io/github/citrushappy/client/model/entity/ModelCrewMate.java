@@ -17,7 +17,6 @@ public class ModelCrewMate extends AnimatedTickingGeoModel<EntityCrewMate>
 
     @Override
     public ResourceLocation getTextureLocation(EntityCrewMate object) {
-        //io.github.citrushappy.MoreModels.logger.info("textures/entity/crewmate" + object.getCrewMateType() + ".png");
         return new ResourceLocation(Reference.MOD_ID, "textures/entity/crewmate" + object.getCrewMateType() + ".png");
     }
 

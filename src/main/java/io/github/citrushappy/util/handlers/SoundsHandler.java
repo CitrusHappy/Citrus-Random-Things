@@ -9,6 +9,7 @@ public class SoundsHandler {
     public static SoundEvent ENTITY_CREWMATE_AMBIENT, ENTITY_CREWMATE_HURT, ENTITY_CREWMATE_DEATH, ENTITY_CREWMATE_FALL_BIG, ENTITY_CREWMATE_FALL_SMALL, ENTITY_CREWMATE_PLAYER_COLLISION, ENTITY_CREWMATE_STEP_GENERIC;
     public static SoundEvent BLOCK_EMERGENCY_BUTTON;
     public static SoundEvent ENTITY_BAKA_MITAI_CREEPER_BLOW, ENTITY_BAKA_MITAI_CREEPER_FUSE;
+    public static SoundEvent KILL;
 
     public static void registerSounds()
     {
@@ -24,6 +25,8 @@ public class SoundsHandler {
 
         ENTITY_BAKA_MITAI_CREEPER_FUSE = registerSound("entity.bakamitaicreeper.fuse");
         ENTITY_BAKA_MITAI_CREEPER_BLOW = registerSound("entity.bakamitaicreeper.blow");
+
+        KILL = registerSound("item.kill");
     }
 
     private static SoundEvent registerSound(String name)
