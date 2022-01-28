@@ -2,6 +2,9 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.tattletail.idle": {
+			"loop": true
+		},
+		"animation.tattletail.worried_look": {
 			"loop": true,
 			"animation_length": 4.54167,
 			"bones": {
@@ -130,9 +133,6 @@
 					}
 				}
 			}
-		},
-		"animation.tattletail.look_around": {
-			"loop": true
 		}
 	},
 	"geckolib_format_version": 2
