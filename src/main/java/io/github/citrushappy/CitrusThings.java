@@ -2,6 +2,9 @@ package io.github.citrushappy;
 
 import io.github.citrushappy.proxy.CommonProxy;
 import io.github.citrushappy.util.Reference;
+import io.github.citrushappy.util.registry.ItemRegistry;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -21,12 +24,38 @@ public class CitrusThings
     public static CitrusThings instance;
 
     public static Logger logger;
+    public static CreativeTabs citrusthingsItemGroup;
     //public static final CreativeTabs itemsblockstab = new CreaturesTab("itemsblockstabcreatures");
+
+
+
+    //creative tab
+    public static CreativeTabs getCitrusthingsItemGroup()
+    {
+        if (citrusthingsItemGroup == null)
+        {
+            citrusthingsItemGroup = new CreativeTabs(CreativeTabs.getNextID(), "Citrusthings")
+            {
+                @Override
+                public ItemStack createIcon() {
+                    return new ItemStack(ItemRegistry.KNIFE);
+                }
+            };
+        }
+
+        return citrusthingsItemGroup;
+    }
+
+
+
+
+
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         logger = event.getModLog();
+
         proxy.preInit(event);
 
         GeckoLib.initialize();

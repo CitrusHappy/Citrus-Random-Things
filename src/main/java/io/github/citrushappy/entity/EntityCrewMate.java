@@ -1,5 +1,6 @@
 package io.github.citrushappy.entity;
 
+import io.github.citrushappy.util.Reference;
 import io.github.citrushappy.util.handlers.SoundsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
@@ -12,6 +13,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
@@ -29,6 +31,8 @@ import javax.annotation.Nullable;
 
 public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnimationTickable
 {
+    public static final ResourceLocation LOOT = new ResourceLocation(Reference.MOD_ID, "entities/crewmate");
+
     private static final DataParameter<Integer> CREWMATE_VARIANT = EntityDataManager.createKey(EntityCrewMate.class, DataSerializers.VARINT);
     int timeToSpeak = 200;
     boolean canPlayFallSound = false;
@@ -76,6 +80,12 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
         this.setCrewMateType(i);
 
         return livingdata;
+    }
+
+    @Nullable
+    @Override
+    protected ResourceLocation getLootTable() {
+        return LOOT;
     }
 
     @Override
@@ -145,14 +155,12 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
     @Override
     protected SoundEvent getAmbientSound()
     {
-
         return SoundsHandler.ENTITY_CREWMATE_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source)
     {
-
         return SoundsHandler.ENTITY_CREWMATE_HURT;
     }
 

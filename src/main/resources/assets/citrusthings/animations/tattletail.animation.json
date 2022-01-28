@@ -1,0 +1,139 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.tattletail.idle": {
+			"loop": true,
+			"animation_length": 4.54167,
+			"bones": {
+				"left_eye": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [0, 30, 0]
+						},
+						"0.875": {
+							"vector": [0, 30, 0]
+						},
+						"1.0": {
+							"vector": [0, -30, 0]
+						},
+						"2.9167": {
+							"vector": [0, -30, 0]
+						},
+						"3.3333": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"right_eye": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [0, 30, 0]
+						},
+						"0.875": {
+							"vector": [0, 30, 0]
+						},
+						"1.0": {
+							"vector": [0, -30, 0]
+						},
+						"2.9167": {
+							"vector": [0, -30, 0]
+						},
+						"3.3333": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"mouth": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0833": {
+							"vector": [0, 0.5, 0]
+						},
+						"2.9167": {
+							"vector": [0, 0.5, 0]
+						},
+						"3.2083": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"right_ear": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0833": {
+							"vector": [0, 0, -5]
+						},
+						"3.0417": {
+							"vector": [0, 0, -5]
+						},
+						"3.2083": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"left_ear": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0833": {
+							"vector": [0, 0, 5]
+						},
+						"3.0417": {
+							"vector": [0, 0, 5]
+						},
+						"3.2083": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"right_eyelid": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0833": {
+							"vector": [-90, 0, 0]
+						},
+						"2.9167": {
+							"vector": [-90, 0, 0]
+						},
+						"3.2083": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"left_eyelid": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0833": {
+							"vector": [-90, 0, 0]
+						},
+						"2.9167": {
+							"vector": [-90, 0, 0]
+						},
+						"3.2083": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.tattletail.look_around": {
+			"loop": true
+		}
+	},
+	"geckolib_format_version": 2
+}
