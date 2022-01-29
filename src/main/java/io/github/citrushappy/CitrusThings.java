@@ -25,7 +25,6 @@ public class CitrusThings
 
     public static Logger logger;
     public static CreativeTabs citrusthingsItemGroup;
-    //public static final CreativeTabs itemsblockstab = new CreaturesTab("itemsblockstabcreatures");
 
 
 

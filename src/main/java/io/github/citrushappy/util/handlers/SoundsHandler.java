@@ -11,6 +11,11 @@ public class SoundsHandler {
     public static SoundEvent ENTITY_BAKA_MITAI_CREEPER_BLOW, ENTITY_BAKA_MITAI_CREEPER_FUSE;
     public static SoundEvent KILL;
 
+    public static SoundEvent ITEM_TT_SERVO;
+
+
+
+
     public static void registerSounds()
     {
         ENTITY_CREWMATE_AMBIENT = registerSound("entity.crewmate.ambient");
@@ -27,6 +32,9 @@ public class SoundsHandler {
         ENTITY_BAKA_MITAI_CREEPER_BLOW = registerSound("entity.bakamitaicreeper.blow");
 
         KILL = registerSound("item.kill");
+
+        ITEM_TT_SERVO = registerSound("item.tt.servo");
+
     }
 
     private static SoundEvent registerSound(String name)

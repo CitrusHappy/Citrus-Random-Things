@@ -102,5 +102,31 @@
     [
       { "name": "citrusthings:item/kill", "stream": true }
     ]
+  },
+
+  "item.tt.servo":
+  {
+    "category": "item",
+    "subtitle": "item.tt.servo",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/servo1", "stream": true },
+      { "name": "citrusthings:item/tt/servo2", "stream": true },
+      { "name": "citrusthings:item/tt/servo2", "stream": true },
+      { "name": "citrusthings:item/tt/servo3", "stream": true },
+      { "name": "citrusthings:item/tt/servo4", "stream": true },
+      { "name": "citrusthings:item/tt/servo6", "stream": true },
+      { "name": "citrusthings:item/tt/servo7", "stream": true }
+    ]
+  },
+
+  "item.tt.servo_long":
+  {
+    "category": "item",
+    "subtitle": "item.tt.servo_long",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/servo5", "stream": true }
+    ]
   }
 }

@@ -1,11 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.tattletail.idle": {
-			"loop": true
-		},
-		"animation.tattletail.worried_look": {
-			"loop": true,
+		"animation.tattletail.look_worried": {
 			"animation_length": 4.54167,
 			"bones": {
 				"left_eye": {
@@ -131,6 +127,113 @@
 							"vector": [0, 0, 0]
 						}
 					}
+				}
+			},
+			"sound_effects": {
+				"0.0": {
+					"effect": "servo"
+				},
+				"0.875": {
+					"effect": "servo"
+				},
+				"2.9167": {
+					"effect": "servo"
+				}
+			},
+			"timeline": {
+				"0.0": "servo",
+				"0.875": "servo",
+				"2.9167": "servo"
+			}
+		},
+		"animation.tattletail.idle": {
+			"animation_length": 1
+		},
+		"animation.tattletail.ear_wiggle": {
+			"animation_length": 1,
+			"bones": {
+				"right_ear": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.25": {
+							"vector": [0, 0, -14]
+						},
+						"0.4167": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"left_ear": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.25": {
+							"vector": [0, 0, 14]
+						},
+						"0.4167": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			},
+			"sound_effects": {
+				"0.0": {
+					"effect": "servo"
+				},
+				"0.25": {
+					"effect": "servo"
+				}
+			},
+			"timeline": {
+				"0.0": "servo",
+				"0.25": "servo"
+			}
+		},
+		"animation.tattletail.blink": {
+			"animation_length": 0.20833,
+			"bones": {
+				"right_eyelid": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0833": {
+							"vector": [52, 0, 0]
+						},
+						"0.1667": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"left_eyelid": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0833": {
+							"vector": [52, 0, 0]
+						},
+						"0.1667": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			},
+			"sound_effects": {
+				"0.0": {
+					"effect": "servo"
+				},
+				"0.0833": {
+					"effect": "servo"
 				}
 			}
 		}
