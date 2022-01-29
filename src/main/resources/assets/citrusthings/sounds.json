@@ -128,5 +128,19 @@
     [
       { "name": "citrusthings:item/tt/servo5", "stream": true }
     ]
+  },
+
+  "item.tt.bark":
+  {
+    "category": "item",
+    "subtitle": "item.tt.bark",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/tattletail_bark_meloveplaytime", "stream": true },
+      { "name": "citrusthings:item/tt/tattletail_bark_metattletail", "stream": true },
+      { "name": "citrusthings:item/tt/tattletail_bark_playtime", "stream": true },
+      { "name": "citrusthings:item/tt/tattletail_bark_tattletailthatsme", "stream": true }
+    ]
   }
 }
+

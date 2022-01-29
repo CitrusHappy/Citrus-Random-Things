@@ -12,6 +12,7 @@ public class SoundsHandler {
     public static SoundEvent KILL;
 
     public static SoundEvent ITEM_TT_SERVO;
+    public static SoundEvent ITEM_TT_BARK;
 
 
 
@@ -34,10 +35,11 @@ public class SoundsHandler {
         KILL = registerSound("item.kill");
 
         ITEM_TT_SERVO = registerSound("item.tt.servo");
+        ITEM_TT_BARK = registerSound("item.tt.bark");
 
     }
 
-    private static SoundEvent registerSound(String name)
+    public static SoundEvent registerSound(String name)
     {
         ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
         SoundEvent event = new SoundEvent(location);

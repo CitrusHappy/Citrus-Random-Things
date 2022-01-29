@@ -27,8 +27,6 @@ public class CommonProxy
 {
     private static IForgeRegistry<Item> itemRegistry;
 
-    public static ItemTattletail TATTLETAIL;
-
     public void preInit(FMLPreInitializationEvent event)
     {
         ModEntities.init();

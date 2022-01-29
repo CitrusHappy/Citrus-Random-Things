@@ -129,21 +129,10 @@
 					}
 				}
 			},
-			"sound_effects": {
-				"0.0": {
-					"effect": "servo"
-				},
-				"0.875": {
-					"effect": "servo"
-				},
-				"2.9167": {
-					"effect": "servo"
-				}
-			},
 			"timeline": {
-				"0.0": "servo",
-				"0.875": "servo",
-				"2.9167": "servo"
+				"0.0": ["servo"],
+				"0.875": ["servo"],
+				"2.9167": ["servo"]
 			}
 		},
 		"animation.tattletail.idle": {
@@ -185,17 +174,9 @@
 					}
 				}
 			},
-			"sound_effects": {
-				"0.0": {
-					"effect": "servo"
-				},
-				"0.25": {
-					"effect": "servo"
-				}
-			},
 			"timeline": {
-				"0.0": "servo",
-				"0.25": "servo"
+				"0.0": ["servo"],
+				"0.25": ["servo"]
 			}
 		},
 		"animation.tattletail.blink": {
@@ -228,13 +209,9 @@
 					}
 				}
 			},
-			"sound_effects": {
-				"0.0": {
-					"effect": "servo"
-				},
-				"0.0833": {
-					"effect": "servo"
-				}
+			"timeline": {
+				"0.0": ["servo"],
+				"0.0833": ["servo"]
 			}
 		}
 	},
