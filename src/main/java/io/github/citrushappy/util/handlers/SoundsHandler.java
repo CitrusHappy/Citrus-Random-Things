@@ -12,9 +12,15 @@ public class SoundsHandler {
     public static SoundEvent KILL;
 
     public static SoundEvent ITEM_TT_SERVO;
+    public static SoundEvent ITEM_TT_SERVO_LONG;
     public static SoundEvent ITEM_TT_BARK;
-
-
+    public static SoundEvent ITEM_TT_AHH;
+    public static SoundEvent ITEM_TT_WHY_YOU_DO_BAD;
+    public static SoundEvent ITEM_TT_GIVE_ME_A_TREAT;
+    public static SoundEvent ITEM_TT_UH_OH;
+    public static SoundEvent ITEM_TT_ITS_DARK;
+    public static SoundEvent ITEM_TT_BRUSH_ME;
+    public static SoundEvent ITEM_TT_WHEE;
 
 
     public static void registerSounds()
@@ -35,7 +41,17 @@ public class SoundsHandler {
         KILL = registerSound("item.kill");
 
         ITEM_TT_SERVO = registerSound("item.tt.servo");
+        ITEM_TT_SERVO_LONG = registerSound("item.tt.servo_long");
         ITEM_TT_BARK = registerSound("item.tt.bark");
+        ITEM_TT_AHH = registerSound("item.tt.ahh");
+        ITEM_TT_WHY_YOU_DO_BAD = registerSound("item.tt.why_you_do_bad");
+
+        ITEM_TT_GIVE_ME_A_TREAT = registerSound("item.tt.give_me_a_treat");
+        ITEM_TT_UH_OH = registerSound("item.tt.uh_oh");
+        ITEM_TT_ITS_DARK = registerSound("item.tt.its_dark");
+        ITEM_TT_BRUSH_ME = registerSound("item.tt.brush_me");
+        ITEM_TT_WHEE = registerSound("item.tt.whee");
+
 
     }
 

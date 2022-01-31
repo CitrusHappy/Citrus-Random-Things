@@ -130,9 +130,9 @@
 				}
 			},
 			"timeline": {
-				"0.0": ["servo"],
-				"0.875": ["servo"],
-				"2.9167": ["servo"]
+				"0.0": "servo",
+				"0.875": "servo",
+				"2.9167": "servo"
 			}
 		},
 		"animation.tattletail.idle": {
@@ -175,8 +175,8 @@
 				}
 			},
 			"timeline": {
-				"0.0": ["servo"],
-				"0.25": ["servo"]
+				"0.0": ["servo", ""],
+				"0.25": "servo"
 			}
 		},
 		"animation.tattletail.blink": {
@@ -210,8 +210,8 @@
 				}
 			},
 			"timeline": {
-				"0.0": ["servo"],
-				"0.0833": ["servo"]
+				"0.0": "servo",
+				"0.0833": "servo"
 			}
 		}
 	},

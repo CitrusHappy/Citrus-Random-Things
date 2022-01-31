@@ -4,6 +4,7 @@ import io.github.citrushappy.items.ItemTattletail;
 import io.github.citrushappy.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib3.model.AnimatedTickingGeoModel;
 
 public class ModelTattletail extends AnimatedGeoModel<ItemTattletail> {
 

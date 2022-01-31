@@ -11,3 +11,4 @@ public class Reference {
     public static final String CLIENT = "io.github.citrushappy.proxy.ClientProxy";
     public static final String COMMON = "io.github.citrushappy.proxy.CommonProxy";
 }
+

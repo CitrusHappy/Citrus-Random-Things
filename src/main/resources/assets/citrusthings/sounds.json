@@ -1,7 +1,6 @@
 {
   "entity.crewmate.ambient":
   {
-    "category":"entity",
     "subtitle": "entity.crewmate.ambient",
     "sounds":
     [
@@ -14,7 +13,6 @@
 
   "entity.crewmate.hurt":
   {
-    "category":"entity",
     "subtitle": "entity.crewmate.hurt",
     "sounds":
     [
@@ -25,7 +23,6 @@
 
   "entity.crewmate.death":
   {
-    "category":"entity",
     "subtitle": "entity.crewmate.death",
     "sounds":
     [
@@ -36,7 +33,6 @@
 
   "entity.crewmate.fall.big":
   {
-    "category":"entity",
     "subtitle": "entity.crewmate.fall.big",
     "sounds":
     [
@@ -46,7 +42,6 @@
 
   "entity.crewmate.fall.small":
   {
-    "category":"entity",
     "subtitle": "entity.crewmate.fall.small",
     "sounds":
     [
@@ -56,7 +51,6 @@
 
   "entity.crewmate.player.collision":
   {
-    "category":"entity",
     "subtitle": "entity.crewmate.player.collision",
     "sounds":
     [
@@ -66,7 +60,6 @@
 
   "entity.crewmate.step.generic":
   {
-    "category":"entity",
     "subtitle": "entity.crewmate.step.generic",
     "sounds":
     [
@@ -76,7 +69,6 @@
 
   "entity.bakamitaicreeper.fuse":
   {
-    "category":"entity",
     "subtitle": "entity.bakamitaicreeper.fuse",
     "sounds":
     [
@@ -86,7 +78,6 @@
 
   "entity.bakamitaicreeper.blow":
   {
-    "category":"entity",
     "subtitle": "entity.bakamitaicreeper.blow",
     "sounds":
     [
@@ -96,7 +87,6 @@
 
   "item.kill":
   {
-    "category": "item",
     "subtitle": "item.kill",
     "sounds":
     [
@@ -106,7 +96,6 @@
 
   "item.tt.servo":
   {
-    "category": "item",
     "subtitle": "item.tt.servo",
     "sounds":
     [
@@ -122,7 +111,6 @@
 
   "item.tt.servo_long":
   {
-    "category": "item",
     "subtitle": "item.tt.servo_long",
     "sounds":
     [
@@ -132,7 +120,6 @@
 
   "item.tt.bark":
   {
-    "category": "item",
     "subtitle": "item.tt.bark",
     "sounds":
     [
@@ -140,6 +127,59 @@
       { "name": "citrusthings:item/tt/tattletail_bark_metattletail", "stream": true },
       { "name": "citrusthings:item/tt/tattletail_bark_playtime", "stream": true },
       { "name": "citrusthings:item/tt/tattletail_bark_tattletailthatsme", "stream": true }
+    ]
+  },
+  "item.tt.ahh":
+  {
+    "subtitle": "item.tt.ahh",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/tt_ahh", "stream": true },
+      { "name": "citrusthings:item/tt/tt_ahh2", "stream": true },
+      { "name": "citrusthings:item/tt/tt_ahh3", "stream": true },
+      { "name": "citrusthings:item/tt/tt_ahh4", "stream": true },
+      { "name": "citrusthings:item/tt/tt_ahh5", "stream": true },
+      { "name": "citrusthings:item/tt/tt_ahh6", "stream": true }
+    ]
+  },
+  "item.tt.give_me_a_treat":
+  {
+    "subtitle": "item.tt.give_me_a_treat",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/tt_give_me_a_treat", "stream": true }
+    ]
+  },
+  "item.tt.uh_oh":
+  {
+    "subtitle": "item.tt.uh_oh",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/tt_uh_oh", "stream": true }
+    ]
+  },
+  "item.tt.its_dark":
+  {
+    "subtitle": "item.tt.its_dark",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/tt_its_dark", "stream": true }
+    ]
+  },
+  "item.tt.brush_me":
+  {
+    "subtitle": "item.tt.brush_me",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/tt_brush_me", "stream": true }
+    ]
+  },
+  "item.tt.whee":
+  {
+    "subtitle": "item.tt.whee",
+    "sounds":
+    [
+      { "name": "citrusthings:item/tt/tt_whee", "stream": true }
     ]
   }
 }
