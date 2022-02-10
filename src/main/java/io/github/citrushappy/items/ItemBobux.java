@@ -1,6 +1,7 @@
 package io.github.citrushappy.items;
 
 
+import io.github.citrushappy.CitrusThings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,6 +26,7 @@ public class ItemBobux extends Item {
         float eyePosition = playerIn.getEyeHeight();
         Vec3d vecStart = playerIn.getLookVec();
         Vec3d vecEnd = new Vec3d(vecStart.x * lookDistance, vecStart.y * lookDistance, vecStart.z * lookDistance);
+        CitrusThings.logger.info("LOOK VECTORS:" + vecStart + " to " + vecEnd);
 
         //this is returning null, we need to fix this so it returns something
         //position #1 should be eye position,

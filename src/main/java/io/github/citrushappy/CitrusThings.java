@@ -1,5 +1,7 @@
 package io.github.citrushappy;
 
+import io.github.citrushappy.client.renderer.armor.RendererDrip;
+import io.github.citrushappy.items.ItemDrip;
 import io.github.citrushappy.proxy.CommonProxy;
 import io.github.citrushappy.util.Reference;
 import io.github.citrushappy.util.registry.ItemRegistry;
@@ -10,8 +12,11 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
+import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
@@ -47,9 +52,6 @@ public class CitrusThings
 
 
 
-
-
-
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
@@ -71,5 +73,12 @@ public class CitrusThings
     public static void PostInit(FMLPostInitializationEvent event)
     {
         proxy.postInit(event);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Mod.EventHandler
+    public void registerRenderers(FMLPreInitializationEvent event)
+    {
+        GeoArmorRenderer.registerArmorRenderer(ItemDrip.class, new RendererDrip());
     }
 }

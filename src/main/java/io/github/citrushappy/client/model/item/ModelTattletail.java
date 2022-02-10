@@ -1,4 +1,4 @@
-package io.github.citrushappy.client.model;
+package io.github.citrushappy.client.model.item;
 
 import io.github.citrushappy.items.ItemTattletail;
 import io.github.citrushappy.util.Reference;

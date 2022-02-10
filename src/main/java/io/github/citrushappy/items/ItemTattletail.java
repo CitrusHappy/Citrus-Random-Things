@@ -40,6 +40,7 @@ public class ItemTattletail extends Item implements IAnimatable {
     String [] animationListVerbal = {};
 
     public boolean busy = false;
+    public boolean isBeingHeld = false;
     public int timeToSpeak = 200;
     //per tick drain amount 60 ticks in 1 second
     public float drainAmount = .001F;
@@ -77,15 +78,7 @@ public class ItemTattletail extends Item implements IAnimatable {
             //nothing important is happening
             //look for something to do
 
-            if(!metTT)
-            {
-                //fist time meeting tattletail
-                player.playSound(SoundsHandler.ITEM_TT_BARK, 1, 1);
-                //event.getController().setAnimation("animation.tattletail.speak");
-                metTT = true;
-            }
-
-            if(timeToSpeak <= 0)
+            if(timeToSpeak <= 0 && isBeingHeld)
             {
                 //can speak
                 CitrusThings.logger.log(Level.INFO, "light level: " + player.world.getLight(player.getPosition()) + " < 4");
@@ -94,43 +87,51 @@ public class ItemTattletail extends Item implements IAnimatable {
                 CitrusThings.logger.log(Level.INFO, "power: " + this.powerMeter);
                 CitrusThings.logger.log(Level.INFO, "brush: " + this.brushMeter);
 
-                if (brushMeter <= 0)
+                if(!metTT)
                 {
-                    busy = true;
-                    timeToSpeak = 2 * 60;
+                    //fist time meeting tattletail
+                    player.playSound(SoundsHandler.ITEM_TT_BARK, 1, 1);
+                    //event.getController().setAnimation("animation.tattletail.speak");
+                    this.metTT = true;
+                }
+
+                if (this.brushMeter <= 0)
+                {
+                    this.busy = true;
+                    this.timeToSpeak = 2 * 60;
                     player.playSound(SoundsHandler.ITEM_TT_BRUSH_ME, 1, 1);
                 }
                 else if (powerMeter <= 0)
                 {
                     busy = true;
-                    timeToSpeak = 2 * 60;
+                    this.timeToSpeak = 2 * 60;
                     float f = 0.1F + random.nextFloat() * 0.9F;
                     player.playSound(SoundsHandler.ITEM_TT_UH_OH, 1, f);
                 }
                 else if (hungerMeter <= 0)
                 {
-                    busy = true;
-                    timeToSpeak = 2 * 60;
+                    this.busy = true;
+                    this.timeToSpeak = 2 * 60;
                     player.playSound(SoundsHandler.ITEM_TT_GIVE_ME_A_TREAT, 1, 1);
                     //event.getController().setAnimation();
                 }
                 else if (player.world.getLight(player.getPosition()) < 4)
                 {
-                    busy = true;
+                    this.busy = true;
                     //low light detected level 4
-                    timeToSpeak = 2 * 60;
+                    this.timeToSpeak = 2 * 60;
                     player.playSound(SoundsHandler.ITEM_TT_AHH, 1, 1);
                 }
                 else
                 {
                     //chance to speak or sing randomly
-                    int i = random.nextInt(animationListVerbal.length);
+                    //int i = random.nextInt(animationListVerbal.length);
                     //player.playSound(SoundsHandler.ITEM_TT_AHH, 1, 1);
                     //controller.setAnimation(new AnimationBuilder().addAnimation(animationListVerbal[i], false));
-                    busy = false;
+                    this.busy = false;
                 }
             }
-            if(!busy)
+            if(!this.busy)
             {
                 //not speaking
 
@@ -154,13 +155,15 @@ public class ItemTattletail extends Item implements IAnimatable {
     {
         EntityPlayerSP player = Minecraft.getMinecraft().player;
 
-
-        if (event.instructions.contains("servo"))
+        if(isBeingHeld)
         {
-            player.playSound(SoundsHandler.ITEM_TT_SERVO, 1, 1);
+            if (event.instructions.contains("servo"))
+            {
+                player.playSound(SoundsHandler.ITEM_TT_SERVO, 1, 1);
+            }
         }
-    }
 
+    }
 
 
     @Override
@@ -184,6 +187,8 @@ public class ItemTattletail extends Item implements IAnimatable {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 
+        isBeingHeld = isSelected;
+
         if (!worldIn.isRemote)
         {
             if (!getTagCompoundSafe(stack).hasKey("ID") && stack.getTagCompound() != null)
@@ -197,14 +202,14 @@ public class ItemTattletail extends Item implements IAnimatable {
             }
         }
 
-        if(timeToSpeak > 0)
+        if(this.timeToSpeak > 0)
         {
-            timeToSpeak--;
+            this.timeToSpeak--;
         }
 
-        this.hungerMeter -= drainAmount;
-        this.brushMeter -= drainAmount;
-        this.powerMeter -= drainAmount;
+        this.hungerMeter -= this.drainAmount;
+        this.brushMeter -= this.drainAmount;
+        this.powerMeter -= this.drainAmount;
 
         //drains slower the stronger the bond
         //this.happiness -= drainAmount * (friendliness/100);
@@ -214,7 +219,7 @@ public class ItemTattletail extends Item implements IAnimatable {
     //item overrides
     @Override
     public boolean onDroppedByPlayer(ItemStack item, EntityPlayer player) {
-        if(!busy)
+        if(!this.busy)
             player.playSound(SoundsHandler.ITEM_TT_WHEE, 1, 1);
         //create entity
         return super.onDroppedByPlayer(item, player);
@@ -229,10 +234,10 @@ public class ItemTattletail extends Item implements IAnimatable {
 
     @Override
     public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, EntityPlayer player) {
-        if(!busy && timeToSpeak <= 0)
+        if(!this.busy && this.timeToSpeak <= 0)
         {
-            timeToSpeak = 60;
-            happiness -= 10;
+            this.timeToSpeak = 60;
+            this.happiness -= 10;
             player.playSound(SoundsHandler.ITEM_TT_AHH, 1, 1);
         }
 
@@ -244,6 +249,7 @@ public class ItemTattletail extends Item implements IAnimatable {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         this.powerMeter = 0;
+        //playerIn.openGui();
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
