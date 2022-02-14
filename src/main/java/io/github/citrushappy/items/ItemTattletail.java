@@ -4,15 +4,18 @@ import io.github.citrushappy.CitrusThings;
 import io.github.citrushappy.util.handlers.SoundsHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.*;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.apache.logging.log4j.Level;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -25,6 +28,9 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 public class ItemTattletail extends Item implements IAnimatable {
@@ -49,9 +55,9 @@ public class ItemTattletail extends Item implements IAnimatable {
     public boolean metTT = false;
     public int idTT = 0;
     public String nameTT = "Tattletail";
-    public float hungerMeter = 100F;
-    public float brushMeter = 100F;
-    public float powerMeter = 100F;
+    public float feedMeter = 100F;
+    public float groomMeter = 100F;
+    public float batteryMeter = 100F;
     public int happiness = 255;
     public int friendliness = 255;
 
@@ -60,7 +66,7 @@ public class ItemTattletail extends Item implements IAnimatable {
     public ItemTattletail()
      {
          super();
-         this.maxStackSize = 1;
+         setMaxStackSize(1);
      }
 
     //animation functions
@@ -83,9 +89,9 @@ public class ItemTattletail extends Item implements IAnimatable {
                 //can speak
                 CitrusThings.logger.log(Level.INFO, "light level: " + player.world.getLight(player.getPosition()) + " < 4");
                 CitrusThings.logger.log(Level.INFO, "busy?: " + this.busy);
-                CitrusThings.logger.log(Level.INFO, "hunger: " + this.hungerMeter);
-                CitrusThings.logger.log(Level.INFO, "power: " + this.powerMeter);
-                CitrusThings.logger.log(Level.INFO, "brush: " + this.brushMeter);
+                CitrusThings.logger.log(Level.INFO, "hunger: " + this.feedMeter);
+                CitrusThings.logger.log(Level.INFO, "power: " + this.batteryMeter);
+                CitrusThings.logger.log(Level.INFO, "brush: " + this.groomMeter);
 
                 if(!metTT)
                 {
@@ -95,20 +101,20 @@ public class ItemTattletail extends Item implements IAnimatable {
                     this.metTT = true;
                 }
 
-                if (this.brushMeter <= 0)
+                if (this.groomMeter <= 0)
                 {
                     this.busy = true;
                     this.timeToSpeak = 2 * 60;
                     player.playSound(SoundsHandler.ITEM_TT_BRUSH_ME, 1, 1);
                 }
-                else if (powerMeter <= 0)
+                else if (batteryMeter <= 0)
                 {
                     busy = true;
                     this.timeToSpeak = 2 * 60;
                     float f = 0.1F + random.nextFloat() * 0.9F;
                     player.playSound(SoundsHandler.ITEM_TT_UH_OH, 1, f);
                 }
-                else if (hungerMeter <= 0)
+                else if (feedMeter <= 0)
                 {
                     this.busy = true;
                     this.timeToSpeak = 2 * 60;
@@ -189,31 +195,45 @@ public class ItemTattletail extends Item implements IAnimatable {
 
         isBeingHeld = isSelected;
 
-        if (!worldIn.isRemote)
-        {
-            if (!getTagCompoundSafe(stack).hasKey("ID") && stack.getTagCompound() != null)
-            {
-                getTagCompoundSafe(stack).setBoolean("MetTT", this.metTT);
-                getTagCompoundSafe(stack).setInteger("ID", this.idTT++);
-                getTagCompoundSafe(stack).setString("Name", this.nameTT);
-                getTagCompoundSafe(stack).setFloat("BrushMeter", this.brushMeter);
-                getTagCompoundSafe(stack).setFloat("HungerMeter", this.hungerMeter);
-                getTagCompoundSafe(stack).setFloat("PowerMeter", this.powerMeter);
-            }
-        }
-
         if(this.timeToSpeak > 0)
         {
             this.timeToSpeak--;
         }
 
-        this.hungerMeter -= this.drainAmount;
-        this.brushMeter -= this.drainAmount;
-        this.powerMeter -= this.drainAmount;
+        this.feedMeter -= this.drainAmount;
+        this.groomMeter -= this.drainAmount;
+        this.batteryMeter -= this.drainAmount;
 
         //drains slower the stronger the bond
         //this.happiness -= drainAmount * (friendliness/100);
 
+    }
+
+    @Override
+    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
+        NBTTagCompound nbt;
+        if (stack.hasTagCompound())
+        {
+            nbt = stack.getTagCompound();
+        }
+        else
+        {
+            nbt = new NBTTagCompound();
+        }
+
+        assert nbt != null;
+        if(!nbt.hasKey("ID"))
+            nbt.setInteger("ID", this.idTT++);
+        else
+        {
+            nbt.setInteger("ID", this.idTT);
+            nbt.setBoolean("MetTT", this.metTT);
+            nbt.setString("Name", this.nameTT);
+            nbt.setFloat("BrushMeter", this.groomMeter);
+            nbt.setFloat("HungerMeter", this.feedMeter);
+            nbt.setFloat("PowerMeter", this.batteryMeter);
+        }
+        stack.setTagCompound(nbt);
     }
 
     //item overrides
@@ -223,13 +243,6 @@ public class ItemTattletail extends Item implements IAnimatable {
             player.playSound(SoundsHandler.ITEM_TT_WHEE, 1, 1);
         //create entity
         return super.onDroppedByPlayer(item, player);
-    }
-
-    @Override
-    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
-        super.onCreated(stack, worldIn, playerIn);
-        //add NBT tag for name
-        //stack.setTagInfo("");
     }
 
     @Override
@@ -248,7 +261,7 @@ public class ItemTattletail extends Item implements IAnimatable {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-        this.powerMeter = 0;
+        this.batteryMeter = 0;
         //playerIn.openGui();
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -256,12 +269,38 @@ public class ItemTattletail extends Item implements IAnimatable {
 
 
 
-    private NBTTagCompound getTagCompoundSafe(ItemStack stack) {
-        NBTTagCompound tagCompound = stack.getTagCompound();
-        if (tagCompound == null) {
-            tagCompound = new NBTTagCompound();
-            stack.setTagCompound(tagCompound);
+    //tooltips
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        NBTTagCompound nbt = stack.getTagCompound();
+
+        if (stack.hasTagCompound())
+        {
+            Collection<String> tags = nbt.getKeySet();
+            for (String key : tags)
+            {
+                NBTBase tag = nbt.getTag(key);
+
+                if(tag instanceof NBTTagString)
+                    tooltip.add(((NBTTagString) tag).getString());
+
+                if(tag instanceof NBTTagFloat)
+                    tooltip.add(Float.toString(((NBTTagFloat) tag).getFloat()));
+
+                if(tag instanceof NBTTagInt)
+                    tooltip.add(Integer.toString(((NBTTagInt) tag).getInt()));
+            }
         }
-        return tagCompound;
+
+    }
+
+
+
+
+    //capabilities
+    @Nullable
+    @Override
+    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable NBTTagCompound nbt) {
+        return super.initCapabilities(stack, nbt);
     }
 }
