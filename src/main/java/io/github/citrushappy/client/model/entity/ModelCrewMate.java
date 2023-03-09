@@ -30,7 +30,7 @@ public class ModelCrewMate extends AnimatedTickingGeoModel<EntityCrewMate>
     {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
 
-        if(!entity.isDead())
+        if(!entity.isDead() && !entity.isPartying())
         {
             IBone head = this.getAnimationProcessor().getBone("head");
 

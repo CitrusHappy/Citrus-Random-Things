@@ -4,8 +4,8 @@
 		{
 			"description": {
 				"identifier": "geometry.test",
-				"texture_width": 128,
-				"texture_height": 128,
+				"texture_width": 512,
+				"texture_height": 512,
 				"visible_bounds_width": 3,
 				"visible_bounds_height": 2.5,
 				"visible_bounds_offset": [0, 0.75, 0]
@@ -14,29 +14,6 @@
 				{
 					"name": "root",
 					"pivot": [0, 9, 0]
-				},
-				{
-					"name": "head",
-					"parent": "root",
-					"pivot": [0, 12, 0],
-					"cubes": [
-						{"origin": [-5, 12, -4], "size": [10, 6, 8], "uv": [0, 15]},
-						{"origin": [-4, 18, -2], "size": [8, 1, 5], "uv": [28, 15]},
-						{"origin": [-4, 12, 4], "size": [8, 5, 1], "uv": [16, 46]},
-						{"origin": [-3, 12, 5], "size": [6, 5, 1], "pivot": [0, 8, 0], "rotation": [0, 90, 0], "uv": [14, 52]},
-						{"origin": [-3, 12, -6], "size": [6, 5, 1], "pivot": [0, 8, 0], "rotation": [0, 90, 0], "uv": [47, 51]}
-					]
-				},
-				{
-					"name": "glass",
-					"parent": "head",
-					"pivot": [0, 15, -2],
-					"cubes": [
-						{"origin": [-4, 11, -6], "size": [8, 6, 2], "uv": [22, 29]},
-						{"origin": [-4, 12, -7], "size": [8, 4, 1], "uv": [50, 0]},
-						{"origin": [-5, 12, -6], "size": [3, 4, 2], "uv": [54, 5]},
-						{"origin": [2, 12, -6], "size": [3, 4, 2], "uv": [52, 30]}
-					]
 				},
 				{
 					"name": "body",
@@ -55,6 +32,19 @@
 					]
 				},
 				{
+					"name": "DUMPY",
+					"parent": "body",
+					"pivot": [0, 8, 3.5],
+					"cubes": [
+						{"origin": [-5, 4, 0], "size": [10, 8, 9], "uv": [52, 48]},
+						{"origin": [5, 5, 3], "size": [1, 6, 5], "uv": [53, 65]},
+						{"origin": [-6, 5, 3], "size": [1, 6, 5], "uv": [41, 62]},
+						{"origin": [-4, 12, 1], "size": [8, 1, 7], "uv": [57, 5]},
+						{"origin": [-4, 3, 1], "size": [8, 1, 7], "uv": [56, 20]},
+						{"origin": [-4, 19, -9], "size": [8, 1, 6], "pivot": [0, 6, -4], "rotation": [-90, 0, 0], "uv": [0, 60]}
+					]
+				},
+				{
 					"name": "backpack",
 					"parent": "body",
 					"pivot": [0, 11.4, -5],
@@ -63,6 +53,29 @@
 						{"origin": [4, 6.4, 5], "size": [1, 8, 3], "uv": [53, 39]},
 						{"origin": [-4, 5.4, 5], "size": [8, 10, 3], "uv": [0, 29]},
 						{"origin": [-4, 6.4, 8], "size": [8, 8, 1], "uv": [22, 37]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 12, 0],
+					"cubes": [
+						{"origin": [-5, 11, -4], "size": [10, 7, 8], "uv": [61, 28]},
+						{"origin": [-4, 18, -2], "size": [8, 1, 5], "uv": [28, 15]},
+						{"origin": [-4, 11, 4], "size": [8, 6, 1], "uv": [16, 46]},
+						{"origin": [-3, 11, 5], "size": [6, 6, 1], "pivot": [0, 8, 0], "rotation": [0, 90, 0], "uv": [14, 52]},
+						{"origin": [-3, 11, -6], "size": [6, 6, 1], "pivot": [0, 8, 0], "rotation": [0, 90, 0], "uv": [47, 51]}
+					]
+				},
+				{
+					"name": "glass",
+					"parent": "head",
+					"pivot": [0, 15, -2],
+					"cubes": [
+						{"origin": [-4, 11, -6], "size": [8, 6, 2], "uv": [22, 29]},
+						{"origin": [-4, 12, -7], "size": [8, 4, 1], "uv": [50, 0]},
+						{"origin": [-5, 12, -6], "size": [3, 4, 2], "uv": [54, 5]},
+						{"origin": [2, 12, -6], "size": [3, 4, 2], "uv": [52, 30]}
 					]
 				},
 				{

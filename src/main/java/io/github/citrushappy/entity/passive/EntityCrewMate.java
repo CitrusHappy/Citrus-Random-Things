@@ -1,5 +1,6 @@
 package io.github.citrushappy.entity.passive;
 
+import io.github.citrushappy.entity.ai.EntityAIIdle;
 import io.github.citrushappy.util.Reference;
 import io.github.citrushappy.init.SoundsHandler;
 import net.minecraft.block.Block;
@@ -7,6 +8,7 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -18,6 +20,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.IAnimationTickable;
 import software.bernie.geckolib3.core.PlayState;
@@ -36,11 +40,20 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
     private static final DataParameter<Integer> CREWMATE_VARIANT = EntityDataManager.createKey(EntityCrewMate.class, DataSerializers.VARINT);
     int timeToSpeak = 200;
     boolean canPlayFallSound = false;
+    private boolean isPartying = false;
+    private BlockPos jukeboxPosition;
 
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        event.getController().setAnimationSpeed(1D);
+        //TODO: MAKE THIS A SWITCH CASE PLS
+        if(this.isPartying){
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crewmate.dance", true));
+            event.getController().setAnimationSpeed(3D);
+            return PlayState.CONTINUE;
+        }
         if (event.isMoving())
         {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crewmate.walk", true));
@@ -112,7 +125,12 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
 
     public void onLivingUpdate()
     {
-        super.onLivingUpdate();
+        if (this.jukeboxPosition == null || this.jukeboxPosition.distanceSq(this.posX, this.posY, this.posZ) > 34.0D || this.world.getBlockState(this.jukeboxPosition).getBlock() != Blocks.JUKEBOX)
+        {
+            this.isPartying = false;
+            this.jukeboxPosition = null;
+        }
+
         if(!this.onGround && canPlayFallSound && this.motionY < -0.8D)
         {
             canPlayFallSound = false;
@@ -122,16 +140,20 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
         {
             canPlayFallSound = true;
         }
+
+        super.onLivingUpdate();
     }
 
     @Override
     protected void initEntityAI()
     {
-        this.tasks.addTask(0, new EntityAIMoveTowardsRestriction(this, 1.0D));
-        this.tasks.addTask(1, new EntityAIWander(this, 0.4D));
-        this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
-        this.tasks.addTask(2, new EntityAILookIdle(this));
-        super.initEntityAI();
+        this.tasks.taskEntries.clear();
+        this.targetTasks.taskEntries.clear();
+        this.tasks.addTask(0, new EntityAIIdle(this));
+        this.tasks.addTask(1, new EntityAIMoveTowardsRestriction(this, 1.0D));
+        this.tasks.addTask(2, new EntityAIWander(this, 0.4D));
+        this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
+        this.tasks.addTask(4, new EntityAILookIdle(this));
     }
 
     @Override
@@ -181,7 +203,7 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
     @Override
     public void onCollideWithPlayer(EntityPlayer entityIn)
     {
-        if(timeToSpeak <= 0 && this.isEntityAlive() && this.rand.nextInt(1000) > this.livingSoundTime++)
+        if(!isPartying() && timeToSpeak <= 0 && this.isEntityAlive() && this.rand.nextInt(1000) > this.livingSoundTime++)
         {
             this.playSound(SoundsHandler.ENTITY_CREWMATE_PLAYER_COLLISION, getSoundVolume(), 1f);
             timeToSpeak = 200;
@@ -263,6 +285,20 @@ public class EntityCrewMate extends EntityCreature implements IAnimatable, IAnim
         {
             this.typeData = type;
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void setPartying(BlockPos pos, boolean isPartying)
+    {
+        this.setRotation(this.rotationYaw + 180f, this.rotationPitch);
+        this.jukeboxPosition = pos;
+        this.isPartying = isPartying;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public boolean isPartying()
+    {
+        return this.isPartying;
     }
 
 }
