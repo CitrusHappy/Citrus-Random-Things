@@ -1,7 +1,7 @@
-package io.github.citrushappy.entity;
+package io.github.citrushappy.entity.passive;
 
 import io.github.citrushappy.util.Reference;
-import io.github.citrushappy.util.handlers.SoundsHandler;
+import io.github.citrushappy.init.SoundsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.IEntityLivingData;

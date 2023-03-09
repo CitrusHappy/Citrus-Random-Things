@@ -1,6 +1,6 @@
 package io.github.citrushappy.client.model.entity;
 
-import io.github.citrushappy.entity.EntityCrewMate;
+import io.github.citrushappy.entity.passive.EntityCrewMate;
 import io.github.citrushappy.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;

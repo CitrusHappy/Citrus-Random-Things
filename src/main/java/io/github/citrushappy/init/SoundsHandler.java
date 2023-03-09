@@ -1,4 +1,4 @@
-package io.github.citrushappy.util.handlers;
+package io.github.citrushappy.init;
 
 import io.github.citrushappy.util.Reference;
 import net.minecraft.util.ResourceLocation;

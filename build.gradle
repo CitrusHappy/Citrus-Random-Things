@@ -2,6 +2,7 @@ buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
         mavenCentral()
         maven {
             name 'FancyGradle'
@@ -10,12 +11,21 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath group: 'wtf.gofancy.fancygradle', name: 'wtf.gofancy.fancygradle.gradle.plugin', version: '1.1.1-6'
+        classpath group: 'wtf.gofancy.fancygradle', name: 'wtf.gofancy.fancygradle.gradle.plugin', version: '1.1.2-0+'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'java'
+}
+
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'wtf.gofancy.fancygradle'
+
+
 
 fancyGradle {
     patches {
@@ -34,63 +44,33 @@ java {
 }
 
 minecraft {
-    // The mappings can be changed at any time and must be in the following format.
-    // Channel:   Version:
-    // snapshot   YYYYMMDD   Snapshot are built nightly.
-    // stable     #          Stables are built at the discretion of the MCP team.
-    // official   MCVersion  Official field/method names from Mojang mapping files
-    //
-    // You must be aware of the Mojang license when using the 'official' mappings.
-    // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
-    //
-    // Use non-default mappings at your own risk. They may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
     mappings channel: 'stable', version: '39-1.12'
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
             workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            // The markers can be added/removed as needed separated by commas.
             // "SCAN": For mods scan.
             // "REGISTRIES": For firing of registry events.
             // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
-
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
-                citrusthings {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
         }
 
         server {
-            workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            // The markers can be added/removed as needed separated by commas.
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
-
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                citrusthings {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
@@ -111,13 +91,13 @@ processResources {
 
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':'1.12.2-14.23.5.2847'
-        duplicatesStrategy 'warn'
+        duplicatesStrategy DuplicatesStrategy.WARN
     }
 
     // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
-        duplicatesStrategy 'warn'
+        duplicatesStrategy DuplicatesStrategy.WARN
     }
 }
 
@@ -131,13 +111,28 @@ repositories {
     // }
 
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven { url = 'https://repo.spongepowered.org/maven' }
+}
+
+configurations {
+    shade
+    compile.extendsFrom shade
+}
+
+mixin {
+    // Refmaps for each SourceSet
+    add sourceSets.main, "mixins.citrusthings.refmap.json"
+
+    // Configs to add to runs and jars
+    config 'mixins.citrusthings.json'
 }
 
 dependencies {
-    // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft' it is assumed
-    // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
-    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
+    implementation 'org.jetbrains:annotations:20.1.0'
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+
+    // Examples using mod jars from ./libs
+    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -145,28 +140,41 @@ dependencies {
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
     implementation fg.deobf('software.bernie.geckolib:forge-1.12.2-geckolib:3.0.21')
 
-    // Examples using mod jars from ./libs
-    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
+    //implementation fg.deobf('noppes.npcs:CustomNPCs:1.12.2')
 
-    // For more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+
+    shade("org.spongepowered:mixin:0.8") {
+        exclude module: "commons-io"
+        exclude module: "guava"
+        exclude module: "gson"
+        exclude module: "launchwrapper"
+    }
+
+    annotationProcessor 'org.spongepowered:mixin:0.8:processor'
+
+    compileOnly("org.spongepowered:spongeforge:1.12.2-2838-7.3.0:dev") {
+        transitive = true
+    }
 }
+
+//need to shade mixins in order to get it working
 
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
-        attributes([
-                "Specification-Title"     : "citrusthings",
-                "Specification-Vendor"    : "citrushappy",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "citrushappy",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
+        attributes "Specification-Title"     : mod_id
+        attributes "Specification-Vendor"    : "citrushappy"
+        attributes "Specification-Version"   : "1"
+        attributes "Implementation-Title"    : project.name
+        attributes "Implementation-Version"  : project.jar.archiveVersion
+        attributes "Implementation-Vendor"   : "citrushappy"
+        attributes "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
     }
     destinationDirectory.set(file("$rootDir/generated_libs"))
 }
 
+
+
 jar.finalizedBy('reobfJar')
+//jar.finalizedBy('reobfShadowJar')

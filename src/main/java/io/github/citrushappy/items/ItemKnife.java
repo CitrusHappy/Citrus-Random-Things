@@ -1,7 +1,7 @@
 package io.github.citrushappy.items;
 
 import io.github.citrushappy.CitrusThings;
-import io.github.citrushappy.util.handlers.SoundsHandler;
+import io.github.citrushappy.init.SoundsHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

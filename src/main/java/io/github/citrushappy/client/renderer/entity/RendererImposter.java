@@ -2,7 +2,7 @@ package io.github.citrushappy.client.renderer.entity;
 
 
 import io.github.citrushappy.client.model.entity.ModelImposter;
-import io.github.citrushappy.entity.EntityImposter;
+import io.github.citrushappy.entity.monster.EntityImposter;
 import net.minecraft.client.renderer.entity.RenderManager;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 

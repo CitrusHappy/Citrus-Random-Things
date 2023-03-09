@@ -1,7 +1,7 @@
 package io.github.citrushappy.client.model.entity;
 
 
-import io.github.citrushappy.entity.EntityImposter;
+import io.github.citrushappy.entity.monster.EntityImposter;
 import io.github.citrushappy.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;

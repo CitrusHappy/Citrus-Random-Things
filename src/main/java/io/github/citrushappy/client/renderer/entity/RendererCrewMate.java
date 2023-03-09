@@ -1,9 +1,8 @@
 package io.github.citrushappy.client.renderer.entity;
 
 import io.github.citrushappy.client.model.entity.ModelCrewMate;
-import io.github.citrushappy.entity.EntityCrewMate;
+import io.github.citrushappy.entity.passive.EntityCrewMate;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.util.math.Vec3d;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 public class RendererCrewMate extends GeoEntityRenderer<EntityCrewMate>

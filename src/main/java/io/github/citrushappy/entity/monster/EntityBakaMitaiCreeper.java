@@ -1,10 +1,10 @@
-package io.github.citrushappy.entity;
+package io.github.citrushappy.entity.monster;
 
 import java.util.Collection;
 import javax.annotation.Nullable;
 
 import io.github.citrushappy.entity.ai.EntityAIBakaMitaiCreeperSwell;
-import io.github.citrushappy.util.handlers.SoundsHandler;
+import io.github.citrushappy.init.SoundsHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLiving;

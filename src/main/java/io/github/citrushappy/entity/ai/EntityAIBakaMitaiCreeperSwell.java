@@ -1,6 +1,6 @@
 package io.github.citrushappy.entity.ai;
 
-import io.github.citrushappy.entity.EntityBakaMitaiCreeper;
+import io.github.citrushappy.entity.monster.EntityBakaMitaiCreeper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 

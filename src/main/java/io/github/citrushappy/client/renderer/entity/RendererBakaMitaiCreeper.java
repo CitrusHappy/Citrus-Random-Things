@@ -1,6 +1,6 @@
 package io.github.citrushappy.client.renderer.entity;
 
-import io.github.citrushappy.entity.EntityBakaMitaiCreeper;
+import io.github.citrushappy.entity.monster.EntityBakaMitaiCreeper;
 import net.minecraft.client.model.ModelCreeper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;

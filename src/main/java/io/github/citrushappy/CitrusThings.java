@@ -4,7 +4,7 @@ import io.github.citrushappy.client.renderer.armor.RendererDrip;
 import io.github.citrushappy.items.ItemDrip;
 import io.github.citrushappy.proxy.CommonProxy;
 import io.github.citrushappy.util.Reference;
-import io.github.citrushappy.util.registry.ItemRegistry;
+import io.github.citrushappy.init.Items;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -42,14 +42,13 @@ public class CitrusThings
             {
                 @Override
                 public ItemStack createIcon() {
-                    return new ItemStack(ItemRegistry.KNIFE);
+                    return new ItemStack(Items.KNIFE);
                 }
             };
         }
 
         return citrusthingsItemGroup;
     }
-
 
 
     @Mod.EventHandler

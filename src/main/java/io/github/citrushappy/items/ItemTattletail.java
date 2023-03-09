@@ -1,12 +1,11 @@
 package io.github.citrushappy.items;
 
 import io.github.citrushappy.CitrusThings;
-import io.github.citrushappy.util.handlers.SoundsHandler;
+import io.github.citrushappy.init.SoundsHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
