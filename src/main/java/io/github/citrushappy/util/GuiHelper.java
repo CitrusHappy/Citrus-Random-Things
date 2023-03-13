@@ -1,6 +1,6 @@
 package io.github.citrushappy.util;
 
-import io.github.citrushappy.util.config.GuiConfig;
+import io.github.citrushappy.util.config.ConfigTattletail;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
@@ -19,7 +19,7 @@ public class GuiHelper {
 
     public static final double TWO_PI = 2.0D * Math.PI;
 
-    public static int getAnchorX(int width, GuiConfig config) {
+    public static int getAnchorX(int width, ConfigTattletail config) {
         ScaledResolution scaled = new ScaledResolution(Minecraft.getMinecraft());
 
         if (config.anchor == 1 || config.anchor == 4) {
@@ -33,7 +33,7 @@ public class GuiHelper {
         return config.offsetX;
     }
 
-    public static int getAnchorY(int height, GuiConfig config) {
+    public static int getAnchorY(int height, ConfigTattletail config) {
         ScaledResolution scaled = new ScaledResolution(Minecraft.getMinecraft());
 
         if (config.anchor == 3 || config.anchor == 4 || config.anchor == 5) {

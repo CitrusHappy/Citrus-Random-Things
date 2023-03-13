@@ -2,7 +2,7 @@ package io.github.citrushappy.client.gui;
 
 
 import io.github.citrushappy.items.ItemTattletail;
-import io.github.citrushappy.util.CitrusThingsConfig;
+import io.github.citrushappy.util.config.ModConfig;
 import io.github.citrushappy.util.GuiHelper;
 import io.github.citrushappy.util.Reference;
 import net.minecraft.client.Minecraft;
@@ -59,12 +59,11 @@ public class GuiTattletail extends Gui {
         TextureManager textureManager = mc.getTextureManager();
         ScaledResolution scaled = new ScaledResolution(mc);
         FontRenderer fontRenderer = mc.fontRenderer;
-        CitrusThingsConfig config = CitrusThingsConfig.getInstance();
 
         //ICapabilityDivingAttributes idiving = mc.player.getCapability(CapabilityDivingAttributesProvider.DIVING_ATTRIBUTES, null);
 
-        int x = GuiHelper.getAnchorX(102, config.client.guiTattleTailConfig);
-        int y = GuiHelper.getAnchorY(21, config.client.guiTattleTailConfig);
+        int x = GuiHelper.getAnchorX(102, ModConfig.client.tattletail);
+        int y = GuiHelper.getAnchorY(21, ModConfig.client.tattletail);
 
 
         float battery = tattletail.batteryMeter;

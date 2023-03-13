@@ -11,5 +11,8 @@ public class Reference {
 
     public static final String CLIENT = "io.github.citrushappy.proxy.ClientProxy";
     public static final String COMMON = "io.github.citrushappy.proxy.CommonProxy";
+
+    //Other Mod Names
+    public static final String AOA3 = "aoa3";
 }
 
